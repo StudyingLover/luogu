@@ -38,7 +38,7 @@ int main()
     {
         for(int i=len-1;i>=0;i--)
         {
-            if(s[i]=='0'&&i!=1&&flag)
+            if(s[i]=='0'&&i!=0&&flag)
             {
                 if(i==0&&flag==0)
                 {

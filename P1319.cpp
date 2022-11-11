@@ -10,36 +10,29 @@ int main()
     scanf("%d", &n);
     int count=0;
     int c=2;
+    int x=1;
     int i,j,k;
     int t;
     for(;;)
     {
+        x=not x;
         scanf("%d",&t);
         if(t==0)
             break;
-        for(;t>0;t--)
+        i=t;
+        for(;i>0;i--)
         {
-
-            if(c%2==0)
-            {
-                printf("0");
-            }
-            else
-            {
-                printf("1");
-            }
-            if(t-1==0)
-            {
-                c++;
-            }
+            printf("%d",x);
             count++;
             if(count==n)
             {
                 printf("\n");
                 count=0;
-//                c++;
             }
+
         }
+
+
     }
     return 0;
 }
