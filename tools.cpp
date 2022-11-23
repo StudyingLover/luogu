@@ -1,9 +1,4 @@
 //https://www.zhihu.com/answer/2220883782
-作者：W-RB
-        链接：https://www.zhihu.com/question/264251178/answer/2220883782
-来源：知乎
-        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
 #pragma GCC optimize(1)
 #pragma GCC optimize(2)
 #pragma GCC optimize(3)
@@ -81,11 +76,11 @@ void write(int x)
     return;
 }
 
-signed main()
-{
-
-    return 0;
-}
+//signed main()
+//{
+//
+//    return 0;
+//}
 
 
 //quick sort
@@ -98,10 +93,10 @@ void quicksort(int a[],int low,int high)
     while(first<last)
     {
         while(first<last&&a[last]>=key)
-            --last;
+            last--;
         a[first]=a[last];
         while(first<last&&a[first]<=key)
-            ++first;
+            first++;
         a[last]=a[first];
     }
     a[first]=key;
