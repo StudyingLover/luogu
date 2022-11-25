@@ -3,8 +3,47 @@
 //
 #include<bits/stdc++.h>
 using namespace std;
-int is[100000000]={1,1,0};
-void prime(int n)
+
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch<'0'||ch>'9')
+    {
+        if(ch=='-')
+        {
+            f=-1;
+        }
+        ch=getchar();
+    }
+    while(ch>='0'&&ch<='9')
+    {
+        x=x*10+ch-'0';
+        ch=getchar();
+    }
+    return x*f;
+}
+
+void iwrite(int x)
+{
+    if (x < 0) putchar('-'), x = -x;
+    if (x > 9) iwrite(x / 10);
+    putchar(x % 10 + '0');
+    return;
+}
+
+bool ok(int k)   //回文数
+{
+    int a[10],i=0;
+    while (k>0){a[i]=k%10;k/=10;i++;}
+    for(int j=0;j<i;j++)if(a[j]!=a[i-j-1])return false;
+    return true;
+}
+
+
+
+int is[1999999]={1,1,0};
+void is_prime(int n)
 {
     int i,j,k;
     for(i=2;i<n;i++)
@@ -19,39 +58,53 @@ void prime(int n)
         }
     }
 }
+int trad_prime(int n)
+{
+    int i;
+    for(i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
 
-bool pd_h(int x)
+int mix_prime(int n)
 {
 
-    int y=x,num=0;//int y=x,防止x被改变
-    while (y!=0)
+    if(n<1999999)
     {
-        num=num*10+y%10;//上一次数字的记录进位再加上下一位数
-        y/=10;
+        return not is[n];
     }
-    if (num==x) return 1;
-    else return 0;
+    else
+    {
+        return trad_prime(n);
+    }
 }
+
+
 
 
 int main()
 {
+    is_prime(1999999);
 
     int n,m;
-    cin>>n>>m;
-    prime(m);
+    n=read();
+    m=read();
+//    prime(m);
+
     int i,j,k;
-//    cout<<is[4];
-//    for(i=n;i<=m;i++)
-//    {
-//        if(pd_h(i)&&!is[i])
-//        {
-//            cout<<i<<endl;
-//        }
-//    }
-    for(i=1;i<=100000000;i++)
+
+    for(i=n;i<=m;i++)
     {
-        printf("%d,",is[i]);
+        if(mix_prime(i)&&ok(i))
+        {
+              iwrite(i);
+              putchar('\n');
+        }
     }
     return 0;
 }
